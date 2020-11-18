@@ -321,6 +321,6 @@ https://github.com/margueriteroth/gatsby-prismic-starter-prist/issues/5#issuecom
 I've had issues fetching updated data from Prismic. Running `gatsby clean` clears the cache.
 
 Additionally, clearing the cache, node modules, and package-lock.json can also clear your slate. 
-1. `rm -rf node_modules .cache package-lock.json`
+1. ``rm -rf node_modules .cache package-lock.json``
 2. `npm install`
 

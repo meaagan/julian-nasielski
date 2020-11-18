@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Prist | Gatsby & Prismic Starter`,
-        description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
+    description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
     author: `Marguerite Roth | marguerite.io`,
   },
   plugins: [
@@ -24,11 +24,33 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-        resolve: 'gatsby-source-prismic-graphql',
-        options: {
-            repositoryName: 'prist', // (REQUIRED, replace with your own)
-            linkResolver: () => post => `/${post.uid}`,
-        }
+      resolve: '@prismicio/gatsby-source-prismic-graphql',
+      options: {
+        repositoryName: 'juliannasielski', // required
+        defaultLang: 'en-us', // optional, but recommended
+        path: '/preview', // optional, default: /preview
+        previews: true, // optional, default: true
+        // pages: [{ // optional
+        //   type: 'Post', // TypeName from prismic
+        //   match: '/post/:uid', // pages will be generated under this pattern
+        //   previewPath: '/post', // optional path for unpublished documents
+        //   component: require.resolve('./src/templates/post.jsx'),
+        //   sortBy: 'date_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
+        // },
+        // {
+        //   type: 'Project', // TypeName from prismic
+        //   match: '/project/:uid', // pages will be generated under this pattern
+        //   previewPath: '/project', // optional path for unpublished documents
+        //   component: require.resolve('./src/templates/project.jsx'),
+        //   sortBy: 'date_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
+        // }
+        // ],
+        // extraPageFields: 'article_type', // optional, extends pages query to pass extra fields
+        sharpKeys: [
+          /image|photo|picture/, // (default)
+          'profilepic',
+        ],
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -43,13 +65,13 @@ module.exports = {
       },
     },
     // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-    {
-        resolve: `gatsby-plugin-google-analytics`,
-        options: {
-            trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
-            head: true,
-        },
-    },
+    // {
+    //     resolve: `gatsby-plugin-google-analytics`,
+    //     options: {
+    //         trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+    //         head: true,
+    //     },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
