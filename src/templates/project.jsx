@@ -50,11 +50,39 @@ const WorkLink = styled(Link)`
 `
 
 
-const Project = ({ project, meta }) => {
+const Project = ({ project, meta, prismicContent }) => {
+    const blogContent = prismicContent.node.body.map((slice, index) => {
+        // Render the right markup for the given slice type
+ 
+        // Image Gallery Slice
+        if (slice.type === 'image_gallery') {
+          const galleryContent = slice.fields.map((gallery, galleryIndex) => (
+            <span key={`gallery-item-${galleryIndex}`}>
+              <img
+                src={gallery.gallery_image.url}
+                alt={gallery.gallery_image.alt}
+              />
+              <p className="image-caption">
+                {RichText.asText(gallery.image_caption)}
+              </p>
+            </span>
+          ))
+          return (
+            <div className="image-gallery" key={`slice-${index}`}>
+              {galleryContent}
+            </div>
+          )
+    
+        // Return null by default
+        }
+        return null
+      })
+
+
     return (
         <>
             <Helmet
-                title={`${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`}
+                title={`${project.project_title[0].text} | Julian Nasielski`}
                 titleTemplate={`%s | ${meta.title}`}
                 meta={[
                     {
@@ -63,7 +91,7 @@ const Project = ({ project, meta }) => {
                     },
                     {
                         property: `og:title`,
-                        content: `${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`,
+                        content: `${project.project_title[0].text} | Julian Nasielski`,
                     },
                     {
                         property: `og:description`,
@@ -102,6 +130,9 @@ const Project = ({ project, meta }) => {
                 )}
                 <ProjectBody>
                     {RichText.render(project.project_description)}
+                    <div>
+                        {blogContent}
+                    </div>
                     <WorkLink to={"/work"}>
                         <Button className="Button--secondary">
                             See other work
@@ -116,6 +147,7 @@ const Project = ({ project, meta }) => {
 export default ({ data }) => {
     const projectContent = data.prismic.allProjects.edges[0].node;
     const meta = data.site.siteMetadata;
+    const prismicContent = data.prismic.allPages.edges[0]
     return (
         <Project project={projectContent} meta={meta}/>
     )
@@ -140,6 +172,15 @@ export const query = graphql`
                         project_description
                         _meta {
                             uid
+                        }
+                        body {
+                            ... on PRISMIC_ProjectBodyImage_gallery {
+                              type
+                              label
+                              fields {
+                                gallery_image
+                              }
+                            }
                         }
                     }
                 }

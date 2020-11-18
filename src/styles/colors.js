@@ -30,6 +30,9 @@ const colors = {
     orange200: "#FDE1D9",
     orange100: "#FEF0EC",
 
+    yellow300: "#f2c35c",
+    yellow500: "#F0A500",
+
     pink900: "#804980",
     pink800: "#B366B3",
     pink700: "#CC74CC",

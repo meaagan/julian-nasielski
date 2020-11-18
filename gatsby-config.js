@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Prist | Gatsby & Prismic Starter`,
-    description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
+    title: `Julian Nasielski`,
+    description: `Level designer from Montreal, Canada`,
     author: `Marguerite Roth | marguerite.io`,
   },
   plugins: [

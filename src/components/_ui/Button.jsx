@@ -5,7 +5,7 @@ import dimensions from "styles/dimensions";
 
 const ButtonContainer = styled("button")`
     padding: 1em 2em;
-    background: ${colors.blue400};
+    background: ${colors.yellow500};
     font-weight: 600;
     color: white;
     outline: none;
@@ -13,7 +13,7 @@ const ButtonContainer = styled("button")`
     font-size: 1rem;
     border-radius: 2px;
     position: relative;
-    transition: background 100ms ease-in-out;
+    // transition: background 100ms ease-in-out;
 
     @media(max-width:${dimensions.maxwidthMobile}px) {
         padding: 0.8em 1.8em;
@@ -31,7 +31,7 @@ const ButtonContainer = styled("button")`
         top: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, ${colors.pink400} 0%, ${colors.purple400} 100%);
+        background: ${colors.yellow500};
         z-index: -1;
     }
 

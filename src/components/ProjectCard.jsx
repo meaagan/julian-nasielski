@@ -32,7 +32,7 @@ const ProjectCardContainer = styled(Link)`
         transition: all 150ms ease-in-out;
 
         .ProjectCardAction {
-            color: ${colors.blue500};
+            color: ${colors.yellow500};
             transition: all 150ms ease-in-out;
 
             span {
@@ -66,7 +66,7 @@ const ProjectCardContent = styled("div")`
         height: 100%;
         left: 0;
         top: 0;
-        background: ${colors.blue500};
+        background: ${colors.yellow500};
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;
@@ -122,8 +122,8 @@ const ProjectCardImageContainer = styled("div")`
     align-items: flex-end;
     overflow: hidden;
     position: relative;
-    padding-left: 2em;
-    padding-right: 2em;
+    // padding-left: 2em;
+    // padding-right: 2em;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         padding-top: 3em;
@@ -140,14 +140,14 @@ const ProjectCardImageContainer = styled("div")`
         height: 100%;
         left: 0;
         top: 0;
-        background: ${colors.blue500};
+        background: ${colors.yellow500};
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;
     }
 
     img {
-        max-width: 400px;
+        // max-width: 400px;
         width: 100%;
         box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
 

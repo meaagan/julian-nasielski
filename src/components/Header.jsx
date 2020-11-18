@@ -6,8 +6,9 @@ import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
 
 const HeaderContainer = styled("div")`
-    padding-top: 3.75em;
-    padding-bottom: 3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #c5c5c5;
 `
 
 const HeaderContent = styled("div")`
@@ -79,11 +80,11 @@ const Header = () => (
                 <Logo/>
             </Link>
             <HeaderLinks>
-                <Link
+                {/* <Link
                     activeClassName="Link--is-active"
                     to="/work">
                     Work
-                </Link>
+                </Link> */}
                 {/* <Link
                     activeClassName="Link--is-active"
                     to="/blog">

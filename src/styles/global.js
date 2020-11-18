@@ -29,7 +29,7 @@ const globalStyles = css`
             box-sizing: border-box;
 
             &::selection {
-                background: ${colors.orange500};
+                background: ${colors.yellow500};
                 color: white;
             }
         }
