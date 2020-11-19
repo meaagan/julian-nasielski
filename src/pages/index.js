@@ -137,10 +137,9 @@ const RenderBody = ({ home, projects, meta }) => (
             <>
                 {RichText.render(home.hero_title)}
             </>
-            <a href={home.hero_button_link.url}
-               target="_blank" rel="noopener noreferrer">
+            <a href="#about"rel="noopener noreferrer">
                 <Button>
-                    {RichText.render(home.hero_button_text)}
+                    About Me
                 </Button>
             </a>
         </Hero>
@@ -160,11 +159,13 @@ const RenderBody = ({ home, projects, meta }) => (
             </WorkAction>
         </Section>
         <Section>
-            {RichText.render(home.about_title)}
-            <About
-                bio={home.about_bio}
-                socialLinks={home.about_links}
-            />
+            <div id="about">
+                {RichText.render(home.about_title)}
+                <About 
+                    bio={home.about_bio}
+                    socialLinks={home.about_links}
+                />
+            </div>
         </Section>
     </>
 );
@@ -197,13 +198,6 @@ export const query = graphql`
                 edges {
                     node {
                         hero_title
-                        hero_button_text
-                        hero_button_link {
-                            ... on PRISMIC__ExternalLink {
-                                _linkType
-                                url
-                            }
-                        }
                         content
                         about_title
                         about_bio

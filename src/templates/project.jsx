@@ -9,7 +9,6 @@ import Button from "components/_ui/Button";
 import Layout from "components/Layout";
 
 const ProjectHeroContainer = styled("div")`
-    background: ${colors.grey200};
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -18,7 +17,7 @@ const ProjectHeroContainer = styled("div")`
     padding-top: 2.25em;
     margin-bottom: 3.5em;
 
-    img {
+    .ProjectVideo {
         max-width: 600px;
     }
 `
@@ -30,7 +29,7 @@ const ProjectTitle = styled("div") `
 `
 
 const ProjectBody = styled("div")`
-    max-width: 550px;
+    // max-width: 550px;
     margin: 0 auto;
 
     .block-img {
@@ -52,9 +51,6 @@ const WorkLink = styled(Link)`
 
 const Project = ({ project, meta, prismicContent }) => {
     const blogContent = prismicContent.body.map((slice, index) => {
-        // Render the right markup for the given slice type
- 
-        // Image Gallery Slice
         if (slice.type === 'image_gallery') {
           const galleryContent = slice.fields.map((gallery, galleryIndex) => (
             <span key={`gallery-item-${galleryIndex}`}>
@@ -69,7 +65,6 @@ const Project = ({ project, meta, prismicContent }) => {
               {galleryContent}
             </div>
           )
-    
         // Return null by default
         }
         return null
@@ -120,11 +115,9 @@ const Project = ({ project, meta, prismicContent }) => {
                 <ProjectTitle>
                     {RichText.render(project.project_title)}
                 </ProjectTitle>
-                {project.project_hero_image && (
-                    <ProjectHeroContainer>
-                        <img src={project.project_hero_image.url} alt="bees" />
-                    </ProjectHeroContainer>
-                )}
+                <ProjectHeroContainer>
+                    <div dangerouslySetInnerHTML={{__html: project.project_hero_video.html}} />
+                </ProjectHeroContainer>
                 <ProjectBody>
                     {RichText.render(project.project_description)}
                     <div>
@@ -145,6 +138,7 @@ export default ({ data }) => {
     const projectContent = data.prismic.allProjects.edges[0].node;
     const meta = data.site.siteMetadata;
     const prismicContent = data.prismic.allProjects.edges[0].node;
+    if (!prismicContent) return null
     return (
         <Project project={projectContent} meta={meta} prismicContent={prismicContent} />
     )
@@ -165,7 +159,7 @@ export const query = graphql`
                         project_preview_thumbnail
                         project_category
                         project_post_date
-                        project_hero_image
+                        project_hero_video
                         project_description
                         _meta {
                             uid
