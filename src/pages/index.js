@@ -6,7 +6,6 @@ import { graphql, Link } from "gatsby";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
-import Button from "components/_ui/Button";
 import About from "components/About";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
@@ -133,16 +132,6 @@ const RenderBody = ({ home, projects, meta }) => (
                 },
             ].concat(meta)}
         />
-        <Hero>
-            <>
-                {RichText.render(home.hero_title)}
-            </>
-            <a href="#about"rel="noopener noreferrer">
-                <Button>
-                    About Me
-                </Button>
-            </a>
-        </Hero>
         <Section>
             {projects.map((project, i) => (
                 <ProjectCard
