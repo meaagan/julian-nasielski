@@ -51,7 +51,7 @@ const WorkLink = styled(Link)`
 
 
 const Project = ({ project, meta, prismicContent }) => {
-    const blogContent = prismicContent.node.body.map((slice, index) => {
+    const blogContent = prismicContent.body.map((slice, index) => {
         // Render the right markup for the given slice type
  
         // Image Gallery Slice
@@ -62,9 +62,6 @@ const Project = ({ project, meta, prismicContent }) => {
                 src={gallery.gallery_image.url}
                 alt={gallery.gallery_image.alt}
               />
-              <p className="image-caption">
-                {RichText.asText(gallery.image_caption)}
-              </p>
             </span>
           ))
           return (
@@ -147,9 +144,9 @@ const Project = ({ project, meta, prismicContent }) => {
 export default ({ data }) => {
     const projectContent = data.prismic.allProjects.edges[0].node;
     const meta = data.site.siteMetadata;
-    const prismicContent = data.prismic.allPages.edges[0]
+    const prismicContent = data.prismic.allProjects.edges[0].node;
     return (
-        <Project project={projectContent} meta={meta}/>
+        <Project project={projectContent} meta={meta} prismicContent={prismicContent} />
     )
 }
 
