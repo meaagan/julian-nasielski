@@ -5,7 +5,7 @@ import dimensions from "styles/dimensions";
 
 const ButtonContainer = styled("button")`
     padding: 1em 2em;
-    background: ${colors.yellow500};
+    background: ${colors.yellow300};
     font-weight: 600;
     color: white;
     outline: none;
@@ -42,13 +42,13 @@ const ButtonContainer = styled("button")`
     }
 
     &.Button--secondary {
-        background: ${colors.blue200};
-        color: ${colors.blue600};
+        background: ${colors.yellow300};
+        color: white;
         padding: 0.95em 1.8em;
         font-size: 0.95rem;
 
         &:hover {
-            background: ${colors.blue300};
+            background: ${colors.yellow500};
             transition: background 100ms ease-in-out;
         }
     }
