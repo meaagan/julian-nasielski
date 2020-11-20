@@ -165,12 +165,12 @@ const Post = ({ post, meta }) => {
 }
 
 export default ({ data }) => {
-    const postContent = data.prismic.allPosts.edges[0].node;
+    const postContent = data.prismic.allPosts.edges[0];
     const meta = data.site.siteMetadata;
 
     if (!postContent) return null
     return (
-        <Post post={postContent} meta={meta}/>
+        <Post post={postContent.node} meta={meta}/>
     )
 }
 
