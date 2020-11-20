@@ -167,6 +167,8 @@ const Post = ({ post, meta }) => {
 export default ({ data }) => {
     const postContent = data.prismic.allPosts.edges[0].node;
     const meta = data.site.siteMetadata;
+
+    if (!data) return null
     return (
         <Post post={postContent} meta={meta}/>
     )
