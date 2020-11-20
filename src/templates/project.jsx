@@ -139,9 +139,9 @@ export default ({ data }) => {
     const projectContent = data.prismic.allProjects.edges[0].node;
     const meta = data.site.siteMetadata;
 
-    if (!project) return null
+    if (!projectContent) return null
     return (
-        <Project project={projectContent} meta={meta} prismicContent={prismicContent} />
+        <Project project={projectContent} meta={meta} />
     )
 }
 
