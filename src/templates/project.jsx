@@ -51,8 +51,8 @@ const WorkLink = styled(Link)`
 `
 
 
-const Project = ({ project, meta, prismicContent }) => {
-    const blogContent = prismicContent.body.map((slice, index) => {
+const Project = ({ project, meta }) => {
+    const blogContent = project.body.map((slice, index) => {
         if (slice.type === 'image_gallery') {
           const galleryContent = slice.fields.map((gallery, galleryIndex) => (
             <Carousel.Item>
@@ -138,8 +138,8 @@ const Project = ({ project, meta, prismicContent }) => {
 export default ({ data }) => {
     const projectContent = data.prismic.allProjects.edges[0].node;
     const meta = data.site.siteMetadata;
-    const prismicContent = data.prismic.allProjects.edges[0].node;
-    if (!prismicContent) return null
+
+    if (!project) return null
     return (
         <Project project={projectContent} meta={meta} prismicContent={prismicContent} />
     )
