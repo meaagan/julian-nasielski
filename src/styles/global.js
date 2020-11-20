@@ -36,6 +36,11 @@ const globalStyles = css`
         }
     }
 
+    a:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
     /*
     A workaround for forcing accessibility wrappers
     to have a 100% height.

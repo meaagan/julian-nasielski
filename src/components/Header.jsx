@@ -18,7 +18,7 @@ const HeaderContent = styled("div")`
     justify-content: space-between;
 `
 
-const StyledLink = styled("a")`
+const StyledLink = styled(Link)`
     color: currentColor;
     text-decoration: none;
     display: block;
@@ -29,7 +29,6 @@ const StyledLink = styled("a")`
 
     &:hover {
         background: ${colors.yellow100};
-        mix-blend-mode: multiply;
         transition: background-color 200ms ease-in-out;
     }
 `
@@ -56,10 +55,10 @@ const Header = () => (
     <HeaderContainer>
         <HeaderContent>
             <StyledLink to="/">
-                <Logo/>
+                <Logo />
             </StyledLink>
             <HeaderLinks>
-                <a href="#about" rel="noreferrer">
+                <a href="/#about" rel="noreferrer">
                     <Button>About Me</Button>
                 </a>
             </HeaderLinks>

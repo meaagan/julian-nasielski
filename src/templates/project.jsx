@@ -5,8 +5,14 @@ import styled from "@emotion/styled";
 import colors from "styles/colors";
 import { Link, graphql } from 'gatsby';
 import { RichText } from "prismic-reactjs";
-import Button from "components/_ui/Button";
 import Layout from "components/Layout";
+import { Carousel } from 'react-bootstrap';
+import './styles.css'
+import Button from "components/_ui/Button";
+
+const OtherProjectsContainer = styled("div")`
+
+`
 
 const ProjectHeroContainer = styled("div")`
     display: flex;
@@ -48,22 +54,32 @@ const WorkLink = styled(Link)`
     text-align: center;
 `
 
+const Project = ({ project, meta, allProjects }) => {
+    const preview = allProjects.map((p, pIndex) => {
+        return(
+            <div>
+                <h4>{p.project_title}</h4>
+                <img src={p.project_preview_thumbnail} />
+                <p>{p.project_preview_description}</p>
+            </div>
+        )
+    })
 
-const Project = ({ project, meta, prismicContent }) => {
-    const blogContent = prismicContent.body.map((slice, index) => {
+    const blogContent = project.body.map((slice, index) => {
         if (slice.type === 'image_gallery') {
           const galleryContent = slice.fields.map((gallery, galleryIndex) => (
-            <span key={`gallery-item-${galleryIndex}`}>
+            <Carousel.Item>
               <img
                 src={gallery.gallery_image.url}
+                className="d-block w-100"
                 alt={gallery.gallery_image.alt}
               />
-            </span>
+            </Carousel.Item>
           ))
           return (
-            <div className="image-gallery" key={`slice-${index}`}>
+            <Carousel>
               {galleryContent}
-            </div>
+            </Carousel>
           )
         // Return null by default
         }
@@ -120,14 +136,15 @@ const Project = ({ project, meta, prismicContent }) => {
                 </ProjectHeroContainer>
                 <ProjectBody>
                     {RichText.render(project.project_description)}
-                    <div>
-                        {blogContent}
-                    </div>
-                    <WorkLink to={"/work"}>
+                    {blogContent}
+                    <WorkLink to={"/"}>
                         <Button className="Button--secondary">
                             See other work
                         </Button>
                     </WorkLink>
+                    <OtherProjectsContainer>
+                        {preview}
+                    </OtherProjectsContainer>
                 </ProjectBody>
             </Layout>
         </>
@@ -137,10 +154,11 @@ const Project = ({ project, meta, prismicContent }) => {
 export default ({ data }) => {
     const projectContent = data.prismic.allProjects.edges[0].node;
     const meta = data.site.siteMetadata;
-    const prismicContent = data.prismic.allProjects.edges[0].node;
-    if (!prismicContent) return null
+    const allProjects = data.prismic.allProjects.edges[0]
+
+    if (!projectContent) return null
     return (
-        <Project project={projectContent} meta={meta} prismicContent={prismicContent} />
+        <Project project={projectContent} meta={meta} allProjects={allProjects}/>
     )
 }
 

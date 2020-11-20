@@ -125,6 +125,7 @@ const ProjectCardImageContainer = styled("div")`
 
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
+
         max-height: 200px;
         flex-direction: column;
         align-items: center;
