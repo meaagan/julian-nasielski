@@ -6,6 +6,14 @@ import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
 
+const ProjectCardIcon = styled.div`
+    margin-bottom: 10px;
+
+    img {
+        width: 60px;
+    }
+`
+
 const ProjectCardContainer = styled(Link)`
     display: grid;
     grid-template-columns: 4fr 7fr;
@@ -156,9 +164,12 @@ const ProjectCardImageContainer = styled("div")`
     }
 `
 
-const ProjectCard = ({ category, title, description, thumbnail, uid}) => (
+const ProjectCard = ({ category, title, description, thumbnail, uid, icon}) => (
     <ProjectCardContainer to={`/work/${uid}`}>
         <ProjectCardContent className="ProjectCardContent">
+            <ProjectCardIcon>
+                <img src={icon} alt="made in" />
+            </ProjectCardIcon>
             <ProjectCardCategory>
                 {category[0].text}
             </ProjectCardCategory>

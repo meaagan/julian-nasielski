@@ -141,6 +141,7 @@ const RenderBody = ({ home, projects, meta }) => (
                     description={project.node.project_preview_description}
                     thumbnail={project.node.project_preview_thumbnail}
                     uid={project.node._meta.uid}
+                    icon={project.node.project_icon.url}
                 />
             ))}
         </Section>
@@ -200,6 +201,12 @@ export const query = graphql`
                         project_preview_description
                         project_preview_thumbnail
                         project_category
+                        project_icon {
+                            _linkType
+                            ... on PRISMIC__ImageLink {
+                                url
+                            }
+                        }
                         project_post_date
                         _meta {
                             uid

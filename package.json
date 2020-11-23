@@ -3,7 +3,7 @@
   "private": true,
   "description": "A starter powered by Gatsby and Prismic to showcase portfolios and blogs.",
   "version": "0.1.0",
-  "author": "Marguerite Roth | marguerite.io | marguerite.roth@gmail.com",
+  "author": "Julian Nasielski",
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.12",
@@ -47,7 +47,10 @@
     "gatsby",
     "prismic",
     "blog",
-    "portfolio"
+    "portfolio",
+    "level design",
+    "julian nasielski",
+    "campus adn"
   ],
   "license": "MIT",
   "scripts": {

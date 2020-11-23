@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Julian Nasielski`,
-    description: `Level designer from Montreal, Canada`,
-    author: `Marguerite Roth | marguerite.io`,
+    description: `Level designer from Montreal, Quebec`,
+    author: `Julian Nasielski`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
