@@ -194,13 +194,14 @@ export const query = graphql`
                     }
                 }
             }
-            allProjects {
+            allProjects(sortBy:project_post_date_ASC) {
                 edges {
                     node {
                         project_title
                         project_preview_description
                         project_preview_thumbnail
                         project_category
+                        project_post_date
                         project_icon {
                             _linkType
                             ... on PRISMIC__ImageLink {

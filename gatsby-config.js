@@ -36,14 +36,14 @@ module.exports = {
           match: '/post/:uid', // pages will be generated under this pattern
           previewPath: '/post', // optional path for unpublished documents
           component: require.resolve('./src/templates/post.jsx'),
-          sortBy: 'meta_firstPublicationDate_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
+          sortBy: 'meta_lastPublicationDate_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
         },
         {
           type: 'Project', // TypeName from prismic
           match: '/project/:uid', // pages will be generated under this pattern
           previewPath: '/project', // optional path for unpublished documents
           component: require.resolve('./src/templates/project.jsx'),
-          sortBy: 'meta_lastPublicationDate_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
+          sortBy: 'meta_firstPublicationDate_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
         }
         ],
         // extraPageFields: 'article_type', // optional, extends pages query to pass extra fields
